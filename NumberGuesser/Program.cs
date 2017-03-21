@@ -22,34 +22,36 @@ namespace NumberGuesser
             var yourGuess = 0;
             var wasSuccessful =  int.TryParse(Console.ReadLine(), out yourGuess);
 
+            // temporary testing -tester needs to be false for it to work
+            bool tester = true;
 
-            for (int i=1; i < 5; i++)
+            int counter = 1;
+
+            while ((yourGuess != randomNumber) && counter < 5)
             {
-                if (yourGuess < (randomNumber))
+                if (yourGuess < randomNumber)
                 {
-                    Console.WriteLine("tooooo lOw guess again please");
+                    Console.WriteLine("You are too low, guess again...");
                     yourGuess = 0;
                     wasSuccessful = int.TryParse(Console.ReadLine(), out yourGuess);
-
+                    counter ++;
                 }
-                else if (yourGuess > randomNumber)
+                if (yourGuess > randomNumber)
                 {
-                    Console.WriteLine("toooo HIGH guess again if you don't mind");
+                    Console.WriteLine("That is TOO HIGH, guess again...");
                     yourGuess = 0;
                     wasSuccessful = int.TryParse(Console.ReadLine(), out yourGuess);
+                    counter++;
                 }
-
-                else if (yourGuess == randomNumber)
-                {
-                    Console.WriteLine("----YOU ARE CORRECT!!!------");
-                    i = 5;
-                }
-
-                
             }
-            if (yourGuess != randomNumber)
-                {
-                Console.WriteLine("you were unable to guess correctly, goodbye");
+
+            if (yourGuess == randomNumber)
+            {
+                Console.WriteLine($"You have Guessed {randomNumber} correctly. Have a nice day");
+            }
+            else
+            {
+                Console.WriteLine($"Your guess was not {randomNumber}. You lose.");
             }
             
         }

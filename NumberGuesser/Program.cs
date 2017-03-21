@@ -19,22 +19,39 @@ namespace NumberGuesser
 
             // Inputs the guess
             Console.WriteLine("Please guess a # from 1-100");
-            var yourGuess = int.Parse(Console.ReadLine());
+            var yourGuess = 0;
+            var wasSuccessful =  int.TryParse(Console.ReadLine(), out yourGuess);
 
 
-            if (yourGuess == (randomNumber - 5))
+            for (int i=1; i < 5; i++)
             {
-                Console.WriteLine("Minus the 5");
+                if (yourGuess < (randomNumber))
+                {
+                    Console.WriteLine("tooooo lOw guess again please");
+                    yourGuess = 0;
+                    wasSuccessful = int.TryParse(Console.ReadLine(), out yourGuess);
+
+                }
+                else if (yourGuess > randomNumber)
+                {
+                    Console.WriteLine("toooo HIGH guess again if you don't mind");
+                    yourGuess = 0;
+                    wasSuccessful = int.TryParse(Console.ReadLine(), out yourGuess);
+                }
+
+                else if (yourGuess == randomNumber)
+                {
+                    Console.WriteLine("----YOU ARE CORRECT!!!------");
+                    i = 5;
+                }
+
+                
             }
-            else if (yourGuess == randomNumber)
-            {
-                Console.WriteLine("condition 2");
+            if (yourGuess != randomNumber)
+                {
+                Console.WriteLine("you were unable to guess correctly, goodbye");
             }
-             
-            else
-            {
-                Console.WriteLine("the key was 22");
-            }
+            
         }
     }
 }

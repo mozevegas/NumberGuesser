@@ -25,12 +25,17 @@ namespace NumberGuesser
             // temporary testing -tester needs to be false for it to work
             bool tester = true;
 
-            int counter = 1;
+            int counter = 0;
 
-            while ((yourGuess != randomNumber) && counter < 5)
+            var guessArray = new int[5];
+
+            while ((yourGuess != randomNumber) && counter < 4)
             {
                 if (yourGuess < randomNumber)
                 {
+                    guessArray[counter] = yourGuess;
+                    // test array for input
+                    Console.WriteLine($"array contains { guessArray[counter]} ");
                     Console.WriteLine("You are too low, guess again...");
                     yourGuess = 0;
                     wasSuccessful = int.TryParse(Console.ReadLine(), out yourGuess);
@@ -38,6 +43,9 @@ namespace NumberGuesser
                 }
                 if (yourGuess > randomNumber)
                 {
+                    guessArray[counter] = yourGuess;
+                    // test array for input
+                    Console.WriteLine($"array contains { guessArray[counter]} ");
                     Console.WriteLine("That is TOO HIGH, guess again...");
                     yourGuess = 0;
                     wasSuccessful = int.TryParse(Console.ReadLine(), out yourGuess);

@@ -10,20 +10,25 @@ namespace NumberGuesser
     {
         static void Main(string[] args)
         {
-
+            // Randomizer
             Random rndTwo = new Random();
             int randomNumber = rndTwo.Next(0, 100);
 
-            var guessMe = 22;
+            // Temporary gives the random number
             Console.WriteLine($"this is the random, shhhh {randomNumber}");
-            Console.WriteLine(guessMe);
-            if (guessMe == 50)
+
+            // Inputs the guess
+            Console.WriteLine("Please guess a # from 1-100");
+            var yourGuess = int.Parse(Console.ReadLine());
+
+
+            if (yourGuess == (randomNumber - 5))
             {
-                Console.WriteLine("Correct number");
+                Console.WriteLine("Minus the 5");
             }
-            else if (guessMe == 48)
+            else if (yourGuess == randomNumber)
             {
-                Console.WriteLine("number 48");
+                Console.WriteLine("condition 2");
             }
              
             else
